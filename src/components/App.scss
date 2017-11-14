@@ -1,0 +1,27 @@
+body {
+  background-color: #1d9f66;
+
+}
+
+.Phrases {
+  text-align: center;
+  text-shadow: 1px 0.2px 2px black;
+}
+
+.Slider {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.slick-arrow {
+  display: none;
+}
+
+.DivJoin {
+  // Center buttons ever
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
