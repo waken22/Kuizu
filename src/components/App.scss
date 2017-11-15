@@ -1,6 +1,10 @@
-body {
-  background-color: #1d9f66;
+@import '../styles/colors.scss';
 
+body {
+  color: $text_color_body;
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  margin: 0;
+  padding: 0;
 }
 
 .Phrases {

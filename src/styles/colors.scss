@@ -1,0 +1,30 @@
+$text_color_body: white;
+
+
+// ==== Primary Colors ==== //
+
+$color_1: #F1EBEB;
+$color_2: #EEE8E8; // Navbar
+$color_3: #CACACA; // Some Shadows
+$color_4: #24C0EB;
+$color_5: #5CCEEE;
+
+
+
+// ==== Buttons ==== //
+
+//=== Set button colors
+// If you wonder why use Sass vars or CSS custom properties...
+  // Make a map with the class names and matching colors
+$colors: (
+  fill: #a972cb,
+  pulse: #ef6eae, 
+  Close: #ff7f82,
+  raise: #909090, 
+  up: #e4cb58, 
+  slide: #8fc866, 
+  offset: #19bc8b,
+);
+
+$colorHover: #4C4C4C;
+$background_color: #F1EBEB,

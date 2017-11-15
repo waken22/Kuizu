@@ -1,3 +1,5 @@
+@import '../styles/colors.scss';
+
 /*
   https://developer.mozilla.org/en/docs/Web/CSS/box-shadow
   box-shadow: [inset?] [top] [left] [blur] [size] [color];
@@ -24,7 +26,8 @@
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--hover); }
+  0% { box-shadow: 0 0 0 0 var(--hover);
+  }
 }
 
 // Stack multiple shadows, one from the left, the other from the right
@@ -35,11 +38,14 @@
     inset 3.5em 0 0 0 var(--hover);  
 }
 
+
+
 // Size can also be negative; see how it's smaller than the element
 .raise:hover,
 .raise:focus {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   transform: translateY(-0.25em);
+  outline: none;
 }
 
 // Animating from the bottom
@@ -68,25 +74,14 @@
   }
 }
 
-//=== Set button colors
-// If you wonder why use Sass vars or CSS custom properties...
-  // Make a map with the class names and matching colors
-$colors: (
-  fill: #a972cb,
-  pulse: #ef6eae, 
-  Close: #ff7f82, 
-  raise: #ffa260, 
-  up: #e4cb58, 
-  slide: #8fc866, 
-  offset: #19bc8b
-);
 
 // Sass variables compile to a static string; CSS variables are dynamic and inherited
   // Loop through the map and set CSS custom properties using Sass variables
 @each $button, $color in $colors {
   .#{$button} {
     --color: $color;
-    --hover: adjust-hue($color, 45deg);
+    --hover: $colorHover;
+    --background: $background-color;
   }
 }
 
@@ -98,13 +93,15 @@ button {
   &:hover,
   &:focus { 
     border-color: var(--hover);
-    color: #fff;
+    color: #4C4C4C;
   }
 }
 
 // Basic button styles
 button {
-  background: none;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-color: var(--background);
   border: 2px solid;
   font: inherit;
   line-height: 1;
