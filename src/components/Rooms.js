@@ -3,7 +3,7 @@ import React from 'react'
 const Rooms = () => {
   return(
     <div className='Rooms'>
-      <p>You are looking the rooms! 🐇</p>
+      <p>You are looking the rooms! <span role="img" aria-label="Rabbit">🐇</span></p>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import ButtonSpecial from './buttons'
 import SliderHome from './SliderHome'
@@ -8,7 +9,7 @@ const Home = () => {
     <div className='Home'>
       <SliderHome />
       <div className='DivJoin'>
-        <ButtonSpecial type='raise' text='Join Now !' />
+        <Link to='/login'><ButtonSpecial type='raise' text='Join Now !' /></Link>
       </div>
     </div>
   )
