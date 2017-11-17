@@ -193,9 +193,15 @@ body {
     height: 230px;
     background-color: #f5f1ee;
     .chat {
+      overflow: scroll;
+      padding-top: 20px;
       margin-top: 2.2em;
       height: 150px;
       background-color: #FFFFFF;
+    }
+    .chat-message {
+      color: #808080;
+      padding-left: 15px;
     }
     .send-box {
       display: flex;
