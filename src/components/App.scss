@@ -197,11 +197,57 @@ body {
       padding-top: 20px;
       margin-top: 2.2em;
       height: 150px;
-      background-color: #FFFFFF;
+      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+      //background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    
     }
-    .chat-message {
-      color: #808080;
-      padding-left: 15px;
+    .chat-box-text-left {
+      margin-left: 9px;
+      p {
+        max-width: 70%;
+        word-wrap: break-word;
+        display: inline-block;
+        box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+        margin-bottom: 9px;
+        -moz-border-radius: 9px;
+        -webkit-border-radius: 9px;
+        background-color: #f3f3f1;
+        color: #808080;
+        padding: 3px 10px 3px 10px;
+
+      }
+    }
+    .chat-box-text-right {
+      text-align:right;
+      margin-right: 9px;
+      p {
+        max-width: 40%;
+        word-wrap: break-word;
+        display: inline-block;
+        box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+        margin-bottom: 9px;
+        -moz-border-radius: 9px;
+        -webkit-border-radius: 9px;
+        background-color: rgba(91, 249, 29, 0.21);
+        color: #808080;
+        padding: 3px 10px 3px 10px;
+
+      }
+    }
+    .connection-box-text {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      p {
+        box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        width: 70%;
+        margin-bottom: 9px;
+        color: rgba(128, 128, 128, 0.70);
+        background-color: rgba(96, 207, 242, 0.44); 
+        text-align: center;
+      }
     }
     .send-box {
       display: flex;
@@ -209,6 +255,7 @@ body {
       padding-top: 5px;
       margin-left: 30px;
       left: 0px;
+
       button {
         font-family: "Roboto", sans-serif;
         text-transform: uppercase;

@@ -5,8 +5,8 @@ import io from 'socket.io-client'
 import getPlayersOnline from './handlers/getPlayersOnline.js'
 import { sendMessage, loadMessages } from '../services/util.js'
 
-const socketUrl = "https://nameless-meadow-40238.herokuapp.com/"
-
+const socketUrl = "https://nameless-meadow-40238.herokuapp.com"
+//const socketUrl = "localhost:3231"
 export default class Room extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +14,8 @@ export default class Room extends Component {
       socket: null,
       user: null,
       message: '',
-      chatText: []
+      chatText: [],
+      currentNewUser: ''
     }
     this.handleMessageChange = this.handleMessageChange.bind(this)
     this.handleSendMessage = this.handleSendMessage.bind(this)
@@ -35,40 +36,47 @@ export default class Room extends Component {
   }
 
   componentDidMount() {
-    this.scrollToBottom();
+    this.scrollToBottom()
     this.handleChargeChat()
     this.handleLoadMessages()
   }
 
-  handleLoadMessages() {
-    loadMessages()
-  }
-
   initSocket = () => {
     const socket = io(socketUrl)
-    socket.on('connect', () => {
+    this.setState({ socket })
+    socket.on('connection', () => {
       console.log('Connected')
     })
-    socket.on('chat-message', message => {
-      this.setState({ chatText: message })
+    socket.on('chat-messages', messages => {
+      this.setState({ chatText: messages })
+    })
+    socket.on('chat-new-message', message => {
+      this.state.chatText.push(message)
+      const updateState = this.state.chatText
+      this.setState({chatText: updateState })
     })
     this.setState({ socket })
   }
 
-  setUser = (user) => {
-    const { socket } = this.state
-    socket.emit('USER_CONNECTED', user)
+  handleLoadMessages() {
+    loadMessages(this.state.socket)
   }
 
-  logout = () => {
-    const { socket } = this.state
-    socket.emit('LOGOUT')
-    this.setState({user:null })
+
+  handleNewUser() {
+    return(<p className="chat-new-user">{ this.state.currentNewUser }</p>)
   }
 
   handleChargeChat() {
+    const SameAuthor = this.state.socket.id || null
     return(this.state.chatText.map(function(chatmsg, i) {
-      return(<p key={i} className="chat-message">{chatmsg.author} : {chatmsg.message}</p>)
+      if (chatmsg.connection)
+        return (<div key={i} className="connection-box-text"><p>{ chatmsg.message }</p></div>)
+      else
+        if (chatmsg.author === SameAuthor)
+          return (<div key={i} className="chat-box-text-right"><p>{ chatmsg.author } : { chatmsg.message }</p></div>)
+        else
+          return (<div key={i} className="chat-box-text-left"><p>{ chatmsg.author } : { chatmsg.message }</p></div>)
     }))
   }
 
@@ -76,9 +84,10 @@ export default class Room extends Component {
     e.preventDefault()
     const send = {
       message: this.state.message,
-      author: 'test'
+      author: this.state.socket.id,
+      connection: false
     }
-    sendMessage(send)
+    sendMessage(send, this.state.socket)
     this.setState({message: ''})
   }
   
@@ -115,12 +124,11 @@ export default class Room extends Component {
               </div>
               <div className="chat-box">
                 <div className="chat">
-                {
-                  this.handleChargeChat()
-                }
-                <div style={{ float:"left", clear: "both" }}
-                  ref={(el) => { this.messagesEnd = el; }}>
-                </div>
+                  { this.handleChargeChat() }
+                  { this.handleNewUser() }
+                  <div style={{ float:"left", clear: "both" }}
+                    ref={(el) => { this.messagesEnd = el }}>
+                  </div>
                 </div>
                   <form className="send-box" onSubmit={ this.handleSendMessage }>
                     <button>Send</button>

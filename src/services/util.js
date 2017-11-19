@@ -1,12 +1,8 @@
-import openSocket from 'socket.io-client'
-const socket = openSocket('localhost:3231')
-
-
-function sendMessage(send) {
+function sendMessage(send, socket) {
   socket.emit('new-message', send)
 } 
 
-function loadMessages() {
+function loadMessages(socket) {
   socket.emit('load-messages')
 }
 
