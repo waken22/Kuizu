@@ -97,9 +97,7 @@ body {
     color: $color_4;
     text-decoration: none;
   }
-  .register-form {
-    display: none;
-  }
+  
 }
 
 
@@ -131,11 +129,7 @@ body {
     }
   }
 }
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
+
 
 .Room {
   .col-users {
@@ -260,6 +254,7 @@ body {
         background-color: rgba(91, 249, 29, 0.21);
         color: #808080;
         padding: 3px 10px 3px 10px;
+        text-align: left;
 
       }
     }

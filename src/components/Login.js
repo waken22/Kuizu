@@ -1,28 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Login = () => {
-  return(
-    <div className="Login">
-      <h1>Welcome to Login <span role="img" aria-label="Chicken">🐓</span></h1>
-      <div className="login-page">
-        <div className="form">
-          <form className="register-form">
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
-            <p className="message">Already registered? <a href="">Sign In</a></p>
-          </form>
-          <form className="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
-            <p className="message">Not registered? <a href="">Create an account</a></p>
-          </form>
-        </div>
+import showLogin from './handlers/showLogin'
+
+class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      login: true
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault()
+    this.state.login ? this.setState({ login : false }) : this.setState({ login : true })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    
+  }
+
+  render() {
+    return(
+      <div className="Login">
+        <h1>Welcome to Login <span role="img" aria-label="Chicken">🐓</span></h1>
+        { showLogin(this.state.login, this.handleClick) }
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Login

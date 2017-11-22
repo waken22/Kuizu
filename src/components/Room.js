@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import io from 'socket.io-client'
 
-import getPlayersOnline from './handlers/getPlayersOnline.js'
-import { sendMessage, loadMessages } from '../services/util.js'
+import renderPlayers from './handlers/renderPlayers.js'
+import { sendMessage, loadMessages } from '../services/socket.js'
 
 //const socketUrl = "https://nameless-meadow-40238.herokuapp.com"
 const socketUrl = "localhost:3231"
@@ -65,7 +65,7 @@ export default class Room extends Component {
   }
 
   handleChargeUsers() {
-    return this.state.users ? getPlayersOnline(this.state.users) : null
+    return this.state.users ? renderPlayers(this.state.users) : null
   }
 
   handleLoadMessages() {

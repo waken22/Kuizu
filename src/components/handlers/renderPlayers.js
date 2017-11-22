@@ -1,6 +1,6 @@
 import React from 'react'
 
-const getPlayersOnline = users => {
+const renderPlayers = users => {
   users = users.map(function(player, i) {
     return(
       <li key={ i }>
@@ -13,4 +13,4 @@ const getPlayersOnline = users => {
   return users
 }
 
-export default getPlayersOnline
+export default renderPlayers
