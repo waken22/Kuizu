@@ -1,15 +1,18 @@
 @import '../styles/colors.scss';
+@import '../styles/fonts.scss';
 
 body {
   color: $text_color_body;
-  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  //background-image: $background_gradient;
+  background-color: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   margin: 0;
   padding: 0;
 }
 
 .Phrases {
   text-align: center;
-  text-shadow: 1px 0.2px 2px black;
+  text-shadow: 1px 0.5px 0.5px #00f2fe;
+  color : $phrases_color !important;
 }
 
 .Slider {
@@ -34,6 +37,8 @@ body {
 // === Login === ///
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+
 .Login {
   h1 {
     padding-top: 25px;
@@ -138,16 +143,21 @@ body {
     justify-content: center;
   }
   .users-card {
-    width: 80%;
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    width: 100%;
     height: 80%;
     padding-bottom: 60px; 
     margin-top: 40px;
-
+    overflow: scroll;
     max-width: 300px;
+    max-height: 730px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     .users-card-title {
+      font-family: $paytone;
+      font-size: 20px;
+      color: #808080;
       text-align: center;
-      padding: 50px 0;
+      padding-top: 25px;
     }
     ul {
       padding: 0px;
@@ -157,46 +167,65 @@ body {
       li {
         display: flex;
         justify-content: center;
+        padding-bottom: 15px;
+        div {
+          width: 170px;
+          height: 75px;
+          div {
+            width: 100%;
+            height: 100%;
+            img {
+              max-width:100%;
+              max-height:100%; 
+              width: 32px;
+              height: auto;
+              -moz-border-radius: 30px;
+              -webkit-border-radius: 30px;
+            }
+            font-size: 15px;
+            font-weight: bold;
+            font-family: paytone, sans-serif;
+            font-size: 17px;
+            background-color: #21a3f3;
+            color: #e6e6e6;
+            word-wrap: break-word;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.32);
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            padding: 10px 1px 3px 10px;
+            margin-bottom: 25px;
+            p {
+              text-align: right;
+              padding-right: 10px;
+              margin: 0px;
+            }
+          }
+        }
       }
     }
-  }
+}
   .questions-card {
     margin-top: 40px;
     margin-left: 20px;
     margin-right: 20px;
-    height: 350px;
+    height: 240px;
+    max-height: 290px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  }
-
-
-
-
-@media (max-width: 999px) {
-  .send-box {
-    input {
-      width: 40%;
-    }
-  }
-}
-@media (min-width: 1000px) {
-  .send-box {
-    input {
-      width: 70%;
-    }
-  }
-}      
+  }   
 
   .chat-box {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     margin-left: 20px;
     margin-right: 20px;
-    height: 230px;
+    max-height: 340px;
+    height: 80%;
     background-color: #f5f1ee;
     .chat {
       overflow: scroll;
+      height: 75%;
+      max-height: 270px;
       padding-top: 20px;
       margin-top: 2.2em;
-      height: 150px;
       background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
       //background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
     
@@ -287,6 +316,23 @@ body {
   }
 }
 
+
+
+
+@media (max-width: 999px) {
+  .send-box {
+    input {
+      width: 40%;
+    }
+  }
+}
+@media (min-width: 1000px) {
+  .send-box {
+    input {
+      width: 70%;
+    }
+  }
+}   
 
 
   

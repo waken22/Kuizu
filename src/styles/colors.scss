@@ -1,15 +1,24 @@
-$text_color_body: white;
+$text_color_body: #4facfe;
+
+
+$background_gradient: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+
+
 
 
 // ==== Primary Colors ==== //
 
 $color_1: #F1EBEB;
-$color_2: #EEE8E8; // Navbar
+$color_2: #f5f1ee; // Navbar
 $color_3: #CACACA; // Some Shadows
 $color_4: #24C0EB;
 $color_5: #5CCEEE;
 $color_6: #1fa1c5;
 
+// ==== HOME =====
+$phrases_color : #4facfe;
+
+$navbar_color: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
 
 
 // ==== Buttons ==== //

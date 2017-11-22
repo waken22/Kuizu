@@ -5,8 +5,10 @@ import io from 'socket.io-client'
 import getPlayersOnline from './handlers/getPlayersOnline.js'
 import { sendMessage, loadMessages } from '../services/util.js'
 
-const socketUrl = "https://nameless-meadow-40238.herokuapp.com"
-//const socketUrl = "localhost:3231"
+//const socketUrl = "https://nameless-meadow-40238.herokuapp.com"
+const socketUrl = "localhost:3231"
+
+
 export default class Room extends Component {
   constructor(props) {
     super(props)
@@ -15,7 +17,7 @@ export default class Room extends Component {
       user: null,
       message: '',
       chatText: [],
-      currentNewUser: ''
+      users: []
     }
     this.handleMessageChange = this.handleMessageChange.bind(this)
     this.handleSendMessage = this.handleSendMessage.bind(this)
@@ -39,6 +41,7 @@ export default class Room extends Component {
     this.scrollToBottom()
     this.handleChargeChat()
     this.handleLoadMessages()
+    this.handleChargeUsers()
   }
 
   initSocket = () => {
@@ -55,13 +58,19 @@ export default class Room extends Component {
       const updateState = this.state.chatText
       this.setState({chatText: updateState })
     })
+    socket.on('get-users', users => {
+      this.setState({ users: users })
+    })
     this.setState({ socket })
+  }
+
+  handleChargeUsers() {
+    return this.state.users ? getPlayersOnline(this.state.users) : null
   }
 
   handleLoadMessages() {
     loadMessages(this.state.socket)
   }
-
 
   handleNewUser() {
     return(<p className="chat-new-user">{ this.state.currentNewUser }</p>)
@@ -97,29 +106,11 @@ export default class Room extends Component {
   }
 
   render() {
-    const players = getPlayersOnline()
-    const { socket } = this.state.socket
     return(
       <div className="Room">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-4 col-users">
-              <div className="users-card">
-                <p className="users-card-title">List of Players</p>
-                <ul>
-                {
-                  players.map(function(player, i) {
-                    return(
-                    <li key={i}>
-                      <p>{ player }</p>
-                    </li>
-                    )
-                  }) 
-                }
-                </ul>
-              </div>
-            </div>
-            <div className="col-md-8">
+            <div className="col-md-9 col-izq">
               <div className="questions-card">
               </div>
               <div className="chat-box">
@@ -130,12 +121,20 @@ export default class Room extends Component {
                     ref={(el) => { this.messagesEnd = el }}>
                   </div>
                 </div>
-                  <form className="send-box" onSubmit={ this.handleSendMessage }>
-                    <button>Send</button>
-                    <input value={ this.state.message } onChange={ this.handleMessageChange } type="text" placeholder="Write here..." autoFocus/>
-                  </form>
-                </div>
+                <form className="send-box" onSubmit={ this.handleSendMessage }>
+                  <button>Send</button>
+                  <input value={ this.state.message } onChange={ this.handleMessageChange } type="text" placeholder="Write here..." autoFocus/>
+                </form>
               </div>
+            </div>
+            <div className="col-md-3 col-users">
+              <div className="users-card">
+                <p className="users-card-title">Players Online</p>
+                <ul>
+                  { this.handleChargeUsers() }
+                </ul>
+              </div>
+            </div>
             </div>
           </div>
         </div>

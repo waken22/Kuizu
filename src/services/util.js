@@ -6,4 +6,8 @@ function loadMessages(socket) {
   socket.emit('load-messages')
 }
 
-export { sendMessage, loadMessages }
+function loadUsers(socket) {
+  socket.emit('load-users')
+}
+
+export { sendMessage, loadMessages, loadUsers }
