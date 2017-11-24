@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import io from 'socket.io-client'
 
-import renderPlayers from './handlers/renderPlayers.js'
+import renderPlayers from './Players.js'
 import { sendMessage, loadMessages } from '../services/socket.js'
 
 //const socketUrl = "https://nameless-meadow-40238.herokuapp.com"
-const socketUrl = "localhost:3231"
+const socketUrl = "localhost:3005"
 
 
 export default class Room extends Component {

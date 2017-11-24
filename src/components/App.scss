@@ -298,14 +298,16 @@ body {
         cursor: pointer;
       }
       input {
-        height: 35px;
+        color: #717171;
         border: none;
         -moz-border-radius: 7px;
         -webkit-border-radius: 7px;
         margin: 20px auto;
+        width: 40%;
       }
       input::placeholder {
         color: $color_3;
+        padding-left: 10px;
       }
     }
   }
@@ -313,14 +315,6 @@ body {
 
 
 
-
-@media (max-width: 999px) {
-  .send-box {
-    input {
-      width: 40%;
-    }
-  }
-}
 @media (min-width: 1000px) {
   .send-box {
     input {
