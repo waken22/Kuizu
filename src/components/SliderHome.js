@@ -7,13 +7,14 @@ class SimpleSlider extends Component {
     var settings = {
       autoplay: true,
       infinite: true,
-      autoplaySpeed:7000,
-      speed: 900,
+      autoplaySpeed: 3900,
+      speed: 1100,
       slidesToShow: 1,
+      slidesToScroll: 1,
       cssEase:'linear',
       draggable:false,
-      slidesToScroll: 1,
-      arrows:false
+      arrows:false,
+      useCSS: true
     }
     return (
       <div>

@@ -5,8 +5,8 @@ import io from 'socket.io-client'
 import renderPlayers from './Players.js'
 import { sendMessage, loadMessages } from '../services/socket.js'
 
-//const socketUrl = "https://nameless-meadow-40238.herokuapp.com"
-const socketUrl = "localhost:3005"
+
+const { REACT_APP_API_SERVER } = process.env
 
 
 export default class Room extends Component {
@@ -45,7 +45,7 @@ export default class Room extends Component {
   }
 
   initSocket = () => {
-    const socket = io(socketUrl)
+    const socket = io(REACT_APP_API_SERVER)
     this.setState({ socket })
     socket.on('connection', () => {
       console.log('Connected')

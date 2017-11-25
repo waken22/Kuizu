@@ -1,9 +1,10 @@
 import axios from 'axios'
 
+const { REACT_APP_API_SERVER } = process.env
 
 const logInCall = submitted => {
   const { username, password } = submitted
-  axios.post('/login', {
+  axios.post(`${REACT_APP_API_SERVER}login`, {
     username: username,
     password: password
   })
@@ -19,7 +20,7 @@ const logInCall = submitted => {
 
 const RegisterCall = submitted => {
   const { username, password, email } = submitted
-  axios.post('/register', {
+  axios.post(`${REACT_APP_API_SERVER}register`, {
     username: username,
     password: password,
     email: email
