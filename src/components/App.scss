@@ -1,5 +1,6 @@
 @import '../styles/colors.scss';
 @import '../styles/fonts.scss';
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 html {
   height: 100%;
@@ -14,10 +15,13 @@ body {
   padding: 0;
 }
 
+
+// ==== HOME ==== //
+
 .Phrases {
   text-align: center;
-  text-shadow: 1px 0.5px 0.5px #00f2fe;
   color : $phrases_color !important;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 .Slider {
@@ -36,13 +40,57 @@ body {
   align-items: center;
   text-align: center;
   display: flex;
+  button {
+    border-radius: 13px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.5);
+    font-family: $paytone;
+    font-size: 18px;
+    width: 180px;
+    height: 60px;
+  }
 }
 
+.Cards {
+  padding-top: 75px;
+  text-align: center;
+  .row {
+    display: flex;
+    justify-content: space-around;
+  }
 
+  // animations of cards
+  .ani1 {animation: fadeInDown 2s;}
+  .ani2 {animation: fadeInDown 3.5s;}
+  .ani3 {animation: fadeInDown 4s;}
+
+  .card {
+    text-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+    width: 300px;
+    background: none;
+    border: none;
+    color: white;
+    i {
+      font-size: 70px;
+    }
+    .card-body {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+}
+.fa-comments:hover {
+  -webkit-animation: rubberBand 2s;
+  animation: rubberBand 2s;
+}
+.fa-users:hover {
+  -webkit-animation: rubberBand 2s;
+  animation: rubberBand 2s;
+}
+.fa-refresh:hover {
+  -webkit-animation: rotateOut 2s;
+  animation: rotateOut 2s;
+} 
 // === Login and Register === ///
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
 
 .Login {
   h1 {
@@ -57,6 +105,7 @@ body {
   margin: auto;
 }
 .form {
+  font-family: $paytone;
   position: relative;
   z-index: 1;
   background: #FFFFFF;
@@ -77,18 +126,7 @@ body {
     font-size: 14px;
   }
   button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: $color_4;
-    width: 100%;
-    border: 0;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer;
+    font-family: $paytone;
   }
   button:hover & button:active & button:focus {
     background: $color_6;
@@ -134,6 +172,8 @@ body {
     }
   }
 }
+
+// === Room === //
 
 
 .Room {

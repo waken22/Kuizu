@@ -1,4 +1,31 @@
-@import '../styles/colors.scss';
+@import '../../styles/colors.scss';
+
+// Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
+button {  
+  color: var(--color);
+  transition: 0.25s;
+  
+  &:hover,
+  &:focus { 
+    border-color: var(--hover);
+    color: #4C4C4C;
+  }
+}
+// Basic button styles
+button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: $color_4;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
 
 /*
   https://developer.mozilla.org/en/docs/Web/CSS/box-shadow
@@ -85,29 +112,8 @@
   }
 }
 
-// Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
-button {  
-  color: var(--color);
-  transition: 0.25s;
-  
-  &:hover,
-  &:focus { 
-    border-color: var(--hover);
-    color: #4C4C4C;
-  }
-}
 
-// Basic button styles
-button {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  background-color: var(--background);
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em;
-  padding: 1em 2em;
-}
+
 
 h1 { font-weight: 400; }
 

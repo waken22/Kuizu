@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 
-import RegisterForm from './RegisterForm'
-import { RegisterCall } from '../services/axios'
+import LoginForm from './LoginForm'
+import { logInCall } from '../../services/axios'
 
-class Register extends Component {
+class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
       username: '',
-      password: '',
-      email: ''
+      password: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleUserChanges = this.handleUserChanges.bind(this)
@@ -24,7 +23,7 @@ class Register extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    RegisterCall(this.state)
+    logInCall(this.state)
   }
 
   handleUserChanges(e) {
@@ -46,11 +45,11 @@ class Register extends Component {
       handleEmailChanges: this.handleEmailChanges
     }
     return(
-      <div className="Login">
-        <RegisterForm state={ state } handle={ handle }/>
+      <div className="Login animated fadeInDown">
+        <LoginForm state={ state } handle={ handle }/>
       </div>
     )
   }
 }
 
-export default Register
+export default Login

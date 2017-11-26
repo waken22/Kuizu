@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import io from 'socket.io-client'
 
 import renderPlayers from './Players.js'
-import { sendMessage, loadMessages } from '../services/socket.js'
+import { sendMessage, loadMessages } from '../../services/socket.js'
 
 
 const { REACT_APP_API_SERVER } = process.env
