@@ -1,35 +1,44 @@
 import axios from 'axios'
+import toastr from 'toastr';
+
 
 const { REACT_APP_API_SERVER } = process.env
 
-const logInCall = submitted => {
+
+// Configs Toastr
+toastr.options.positionClass = 'toast-top-center';
+
+
+function logInCall (submitted) {
   const { username, password } = submitted
-  axios.post(`${REACT_APP_API_SERVER}login`, {
+  return axios.post(`${REACT_APP_API_SERVER}/login`, {
     username: username,
     password: password
   })
-  .then(function (response) {
-    console.log('login!')
-    window.location = '/rooms'
+  .then(function(response) {
+    toastr.success('Login Successfully!', {timeOut: 5000})
+    return true
   })
   .catch(function (error) {
-    console.log(error)
+    toastr.error('Cannot login, check your credentials', {timeOut: 5000})
+    return false
   })
 }
 
-
-const RegisterCall = submitted => {
+function RegisterCall (submitted)  {
   const { username, password, email } = submitted
-  axios.post(`${REACT_APP_API_SERVER}register`, {
+  return axios.post(`${REACT_APP_API_SERVER}/register`, {
     username: username,
     password: password,
     email: email
   })
   .then(function (response) {
-    
+    toastr.success(response.data.msg, {timeOut: 5000})
+    return true
   })
   .catch(function (error) {
-    console.log(error)
+    toastr.error('Something went wrong when you tried to register...', {timeOut: 5000})
+    return false
   })
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 import LoginForm from './LoginForm'
 import { logInCall } from '../../services/axios'
@@ -8,7 +9,8 @@ class Login extends Component {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      login: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleUserChanges = this.handleUserChanges.bind(this)
@@ -16,14 +18,11 @@ class Login extends Component {
     this.handleEmailChanges = this.handleEmailChanges.bind(this)
   }
 
-  handleClick(e) {
-    e.preventDefault()
-    this.state.login ? this.setState({ login : false }) : this.setState({ login : true })
-  }
 
   handleSubmit(e) {
     e.preventDefault()
     logInCall(this.state)
+    .then(data => this.setState({ login: data }))
   }
 
   handleUserChanges(e) {
@@ -47,6 +46,7 @@ class Login extends Component {
     return(
       <div className="Login animated fadeInDown">
         <LoginForm state={ state } handle={ handle }/>
+        {state.login ? <Redirect to='/lobby'/> : null}
       </div>
     )
   }

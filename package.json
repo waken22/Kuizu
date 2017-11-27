@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
+    "jquery": "^3.2.1",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.2",
     "react": "^16.1.0",
@@ -12,7 +13,9 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "react-slick": "^0.15.4",
-    "socket.io-client": "^2.0.4"
+    "react-toastr": "^3.0.0",
+    "socket.io-client": "^2.0.4",
+    "toastr": "^2.1.2"
   },
   "scripts": {
     "start-js": "react-scripts start",

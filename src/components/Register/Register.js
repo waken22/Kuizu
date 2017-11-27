@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+
 
 import RegisterForm from './RegisterForm'
 import { RegisterCall } from '../../services/axios'
@@ -9,7 +11,8 @@ class Register extends Component {
     this.state = {
       username: '',
       password: '',
-      email: ''
+      email: '',
+      register: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleUserChanges = this.handleUserChanges.bind(this)
@@ -17,14 +20,11 @@ class Register extends Component {
     this.handleEmailChanges = this.handleEmailChanges.bind(this)
   }
 
-  handleClick(e) {
-    e.preventDefault()
-    this.state.login ? this.setState({ login : false }) : this.setState({ login : true })
-  }
 
   handleSubmit(e) {
     e.preventDefault()
     RegisterCall(this.state)
+    .then(data => this.setState({ register: data }))
   }
 
   handleUserChanges(e) {
@@ -46,8 +46,9 @@ class Register extends Component {
       handleEmailChanges: this.handleEmailChanges
     }
     return(
-      <div className="Login animated fadeInUp">
+      <div className="Login">
         <RegisterForm state={ state } handle={ handle }/>
+        {state.register ? <Redirect to='/login'/> : null}
       </div>
     )
   }
