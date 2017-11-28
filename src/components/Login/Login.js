@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
+import { setLocalStorage, getLocalStorage } from '../../services/LocalStorage'
 import LoginForm from './LoginForm'
 import { logInCall } from '../../services/axios'
 
@@ -18,11 +19,20 @@ class Login extends Component {
     this.handleEmailChanges = this.handleEmailChanges.bind(this)
   }
 
+  componentDidMount() {
+    let token = getLocalStorage()
+    token ? this.setState({ login: true }) : this.setState({ login: false })
+  }
 
   handleSubmit(e) {
     e.preventDefault()
     logInCall(this.state)
-    .then(data => this.setState({ login: data }))
+    .then(data => {
+      if (data) {
+        setLocalStorage(data.data.token)
+        this.setState({ login: true })
+      }
+    })
   }
 
   handleUserChanges(e) {

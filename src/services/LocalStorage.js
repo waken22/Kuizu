@@ -1,9 +1,9 @@
-export function setSessionStorage(token){
+export function setLocalStorage(token){
   localStorage.setItem('token', token)
 }
-export function getSessionStorage(){
+export function getLocalStorage(){
   return localStorage.getItem('token')
 }
-export function removeSessionStorage(){
+export function removeLocalStorage(){
   return localStorage.removeItem('token')
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
+import { getLocalStorage } from '../../services/LocalStorage'
 
 import RegisterForm from './RegisterForm'
 import { RegisterCall } from '../../services/axios'
@@ -20,11 +21,19 @@ class Register extends Component {
     this.handleEmailChanges = this.handleEmailChanges.bind(this)
   }
 
+  componentDidMount() {
+    let token = getLocalStorage()
+    token ? this.setState({ register: true }) : this.setState({ login: false })
+  }
 
   handleSubmit(e) {
     e.preventDefault()
     RegisterCall(this.state)
-    .then(data => this.setState({ register: data }))
+    .then(data => {
+      if (data) {
+        this.setState({ register: true })
+      }
+    })
   }
 
   handleUserChanges(e) {

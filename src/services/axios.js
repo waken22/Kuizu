@@ -17,11 +17,10 @@ function logInCall (submitted) {
   })
   .then(function(response) {
     toastr.success('Login Successfully!', {timeOut: 5000})
-    return true
+    return response
   })
   .catch(function (error) {
     toastr.error('Cannot login, check your credentials', {timeOut: 5000})
-    return false
   })
 }
 
@@ -34,11 +33,10 @@ function RegisterCall (submitted)  {
   })
   .then(function (response) {
     toastr.success(response.data.msg, {timeOut: 5000})
-    return true
+    return response
   })
   .catch(function (error) {
     toastr.error('Something went wrong when you tried to register...', {timeOut: 5000})
-    return false
   })
 }
 
