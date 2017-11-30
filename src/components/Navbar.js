@@ -13,41 +13,57 @@ class Navbar extends Component {
     super(props)
     this.state = {
       menuNav: false,
-      logoutNav: false
+      logoutNav: false,
+      profileNav: false
     }
     this.NavToggle = this.NavToggle.bind(this)
     this.LogoutToggle = this.LogoutToggle.bind(this)
+    this.ProfileToggle = this.ProfileToggle.bind(this)
   }
 
   NavToggle() {
     this.state.menuNav ? this.setState({ menuNav: false }) : this.setState({ menuNav: true })
   } 
 
+  ProfileToggle() {
+    const CurrentRoute = window.location.pathname
+    const token = getLocalStorage()
+
+    // Don't redirect if profile inside the path profile
+    if(token) {
+      if(CurrentRoute !== '/profile') {
+        this.setState({ profileNav: true})
+      }
+    } 
+  }
+
   LogoutToggle() {
     const CurrentRoute = window.location.pathname
     const token = getLocalStorage()
 
     // Don't redirect if logout in home
-    if(!CurrentRoute === '/')
-      this.setState({ logoutNav: true})
+    if(token) {
+      if(CurrentRoute !== '/')
+        this.setState({ logoutNav: true})
 
-    removeLocalStorage()
-    this.props.chargeUser()
+      removeLocalStorage()
+      this.props.chargeUser()
+    }
   }
 
   render() {
     const avatar = this.props.user
-    const menuNav = this.state.menuNav
-    const logoutNav = this.state.logoutNav
+    const { menuNav, logoutNav, profileNav } = this.state
     return(
       <div>
         <nav className="navbar bg-primary navbar-kuizu">
           <a className="navbar-brand TitleNavbar" href="">Kuizu</a>
           <img onClick={ this.NavToggle } className="img-fluid GuestImg" src={ avatar } alt="loading"/>
         </nav>
-        { menuNav ?
+        { 
+          menuNav ?
             <div className='menu-nav container'>
-              <div className='profile-nav'><span>My Profile</span></div>
+              <div onClick={ this.ProfileToggle } className='profile-nav'><span>My Profile</span></div>
               <div onClick={ this.LogoutToggle } className='profile-logout'><span>Logout <i className="fa fa-sign-out logout-icon" aria-hidden="true"></i></span></div>
             </div>
           :
@@ -55,7 +71,17 @@ class Navbar extends Component {
         }
         {
           logoutNav ?
-            <Redirect to='/'/>
+            (this.setState({ logoutNav: false}),
+            this.setState({ menuNav: false}),
+            <Redirect to='/'/>)
+          :
+            <div></div>
+        }
+        {
+          profileNav ?
+            (this.setState({ profileNav: false}),
+            this.setState({ menuNav: false}),
+            <Redirect to='/profile'/>)
           :
             <div></div>
         }

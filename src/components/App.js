@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 import Main from './Main'
 
 import { getLocalStorage } from '../services/StorageServices'
-import getInfoUser from '../services/UserServices'
+import { getInfoUser } from '../services/UserServices'
 
 // Default info
 import avatar from '../config/default'
@@ -46,11 +46,12 @@ class App extends Component {
 
   render() {
     let { avatar } = this.state.user
+    let { user } = this.state
     const handleChargeUser = this.handleChargeUser
     return (
       <div>
         <Navbar user={ avatar } chargeUser={ handleChargeUser } />
-        <Main chargeUser={ handleChargeUser } />
+        <Main user={ user } chargeUser={ handleChargeUser } />
       </div>
     )
   }

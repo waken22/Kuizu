@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { setLocalStorage } from '../../services/StorageServices'
+import { setLocalStorage, getLocalStorage } from '../../services/StorageServices'
 import LoginForm from './LoginForm'
 import { logInCall } from '../../services/AuthServices'
 
@@ -19,6 +19,9 @@ class Login extends Component {
     this.handleEmailChanges = this.handleEmailChanges.bind(this)
   }
 
+  componentDidMount() {
+    this.handleCheckLogin()
+  }
 
   handleSubmit(e) {
     e.preventDefault()
@@ -29,6 +32,13 @@ class Login extends Component {
         this.setState({ login: true })
       }
     })
+  }
+
+  handleCheckLogin(e) {
+    const token = getLocalStorage()
+    if(token) {
+      this.setState({login: true})
+    }
   }
 
   handleChargeUser() {

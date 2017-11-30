@@ -16,7 +16,10 @@ body {
 }
 
 
-// ==== HOME ==== //
+// ****************************************************************************
+// *                                   Home                                   *
+// ****************************************************************************
+
 
 .Phrases {
   text-align: center;
@@ -90,7 +93,10 @@ body {
   -webkit-animation: rotateOut 2s;
   animation: rotateOut 2s;
 } 
-// === Login and Register === ///
+
+// ****************************************************************************
+// *                            Login and Register                            *
+// ****************************************************************************
 
 .Login {
   h1 {
@@ -143,7 +149,9 @@ body {
   
 }
 
-// === Room === //
+// ****************************************************************************
+// *                                 Room Body                                *
+// ****************************************************************************
 
 .Room {
   .col-users {
@@ -342,6 +350,10 @@ body {
   }
 }   
 
+// ****************************************************************************
+// *                                Lobby Body                                *
+// ****************************************************************************
+
 .RoomsBody {
 
   .BarRoom {
@@ -417,3 +429,58 @@ body {
     }
   }
 }
+
+
+// ****************************************************************************
+// *                               Profile Body                               *
+// ****************************************************************************
+
+.profile-body {
+  height: 700px;
+  display: flex;
+  justify-content: space-around;
+  .profile-card {
+    button {
+      margin-bottom: 25px;
+    } 
+    padding-top: 30px;
+    margin-top: 65px;
+    margin-bottom: 25px;
+    height: 550px;
+    width: 55%;
+    background: white;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    .profile-avatar {
+      height: auto;
+      display: flex;
+      justify-content: space-around;
+      img {
+        width: 90%;
+        height: 90%;
+        max-width: 210px;
+        max-height: 210px;
+      }
+    }
+    form {
+      padding-top: 25px;
+      input {
+        width: 100%;
+      }
+    }
+    p span 
+    {
+      font-family: 'Roboto';
+      font-weight: bold;
+      font-size: 17px;
+      margin-bottom: 20px;
+      background-color: #f5f1ee;
+      border-radius: 6px;
+      display: block;
+    }
+  }
+}
+@media (min-width: 767px) {
+  .profile-card {
+    height: 400px !important;
+  }
+}  

@@ -2,10 +2,10 @@ import React from 'react'
 import { Route, Redirect } from 'react-router'
 import { getLocalStorage } from '../services/StorageServices'
 
-const PrivateRoute = ({ component: Component, chargeUser: chargeUser, ...rest }) => (
+const PrivateRoute = ({ component: Component, chargeUser: chargeUser, user: user, ...rest }) => (
   <Route {...rest} render={props => (
     getLocalStorage() ? (
-      <Component chargeUser={ chargeUser } {...props} />
+      <Component chargeUser={ chargeUser } user={ user } {...props} />
     ) : (
       <Redirect to={{
         pathname: '/login',

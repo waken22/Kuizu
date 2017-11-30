@@ -40,4 +40,15 @@ function RegisterCall (submitted)  {
   })
 }
 
-export { logInCall, RegisterCall }
+const getAuthHeader = () => {
+  const token = localStorage.getItem('token')
+  return ({
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `bearer ${ token }`
+    }
+  })
+}
+
+export { logInCall, RegisterCall, getAuthHeader }

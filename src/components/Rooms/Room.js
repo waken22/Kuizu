@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 
 
 import renderPlayers from './Players.js'
-import getInfoUser from '../../services/UserServices'
+import { getInfoUser } from '../../services/UserServices'
 import { sendMessage, loadMessages, newUser } from '../../services/EventServices.js'
 
 

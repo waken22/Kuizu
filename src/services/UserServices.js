@@ -1,19 +1,23 @@
 import axios from 'axios'
-import { getLocalStorage } from './StorageServices'
+import toastr from 'toastr';
+import { getAuthHeader } from './AuthServices'
+
+// Configs Toastr
+toastr.options.positionClass = 'toast-top-center'
+
 
 const { REACT_APP_API_SERVER } = process.env
 
 const getInfoUser = async () => {
-  const token = getLocalStorage()
-  const { data } = await axios.get(`${REACT_APP_API_SERVER}/getUser`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': `bearer ${ token }`
-    }
-  })
+  const { data } = await axios.get(`${REACT_APP_API_SERVER}/getUser`, getAuthHeader())
   return data
 }
 
+const UpdateProfile = async (avatar) => {
+  const response = await axios.put(`${REACT_APP_API_SERVER}/profile`, { avatar }, getAuthHeader())
+  await toastr.success('Profile Updated Succesfully!', {timeOut: 5000})
+  return response.data
+}
 
-export default getInfoUser
+
+export { UpdateProfile, getInfoUser }

@@ -12,6 +12,7 @@ import Profile from './Profile/Profile'
 
 const Main = props => {
   const { chargeUser } = props
+  const { user } = props
   return (
     <div>
       <Switch>
@@ -22,7 +23,7 @@ const Main = props => {
         <Route exact path='/register' component={ Register }/>
         <PrivateRoute exact path='/room' component={ Room } />
         <PrivateRoute exact path='/lobby' component={ Lobby } chargeUser={ chargeUser }/>
-        <PrivateRoute exact path='/profile' component={ Profile }/>
+        <PrivateRoute exact path='/profile' component={ Profile } user={ user } chargeUser={ chargeUser }/>
       </Switch>
     </div>
   )
