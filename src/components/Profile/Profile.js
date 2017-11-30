@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+
 
 import { UpdateProfile } from '../../services/UserServices'
 
@@ -7,13 +9,15 @@ class Profile extends Component {
     super(props)
     this.state = {
       avatar: '',
+      onLobby: false
     }
     this.handleUrlChange = this.handleUrlChange.bind(this)
     this.handleUpdateAvatar = this.handleUpdateAvatar.bind(this)
     this.handleSendAvatar = this.handleSendAvatar.bind(this)
+    this.handleClickLobby = this.handleClickLobby.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.handleUpdateAvatar()
   }
   handleUrlChange(e) {
@@ -21,8 +25,12 @@ class Profile extends Component {
     this.setState({avatar: e.target.value})
   }
 
-  handleUpdateAvatar(){
-    const avatar = this.props.user.avatar
+  handleClickLobby() {
+    this.setState({ onLobby: true })
+  }
+
+  handleUpdateAvatar = async () =>{
+    await this.setState({avatar: this.props.user.avatar})
   }
 
   handleSendAvatar = async (e) => {
@@ -32,6 +40,7 @@ class Profile extends Component {
     this.props.chargeUser()
   }
   render() {
+    const { onLobby } = this.state
     return (
       <div className='profile-body'>
         <div className='profile-card'>
@@ -53,7 +62,17 @@ class Profile extends Component {
                     <span>Email : {this.props.user.email}</span>
                     <span>User since : {this.props.user.date_of_creation}</span>
                   </p>
-                  <button>Return to Lobby</button>
+                  <button onClick={this.handleClickLobby}>Return to Lobby</button>
+                  {
+                    onLobby
+                    ?
+                    (
+                      this.setState({ onLobby: false }),
+                      <Redirect to='/lobby'/>
+                    )
+                    :
+                    <div></div>
+                  }
                 </div>
               </div>
             </div>
