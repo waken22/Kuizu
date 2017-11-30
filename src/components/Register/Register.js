@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { getLocalStorage } from '../../services/LocalStorage'
-
 import RegisterForm from './RegisterForm'
-import { RegisterCall } from '../../services/axios'
+import { RegisterCall } from '../../services/AuthServices'
 
 class Register extends Component {
   constructor(props) {
@@ -19,11 +17,6 @@ class Register extends Component {
     this.handleUserChanges = this.handleUserChanges.bind(this)
     this.handlePassChanges = this.handlePassChanges.bind(this)
     this.handleEmailChanges = this.handleEmailChanges.bind(this)
-  }
-
-  componentDidMount() {
-    let token = getLocalStorage()
-    token ? this.setState({ register: true }) : this.setState({ login: false })
   }
 
   handleSubmit(e) {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { setLocalStorage, getLocalStorage } from '../../services/LocalStorage'
+import { setLocalStorage } from '../../services/StorageServices'
 import LoginForm from './LoginForm'
-import { logInCall } from '../../services/axios'
+import { logInCall } from '../../services/AuthServices'
 
 class Login extends Component {
   constructor(props) {
@@ -19,10 +19,6 @@ class Login extends Component {
     this.handleEmailChanges = this.handleEmailChanges.bind(this)
   }
 
-  componentDidMount() {
-    let token = getLocalStorage()
-    token ? this.setState({ login: true }) : this.setState({ login: false })
-  }
 
   handleSubmit(e) {
     e.preventDefault()
@@ -33,6 +29,10 @@ class Login extends Component {
         this.setState({ login: true })
       }
     })
+  }
+
+  handleChargeUser() {
+    console.log(this.props)
   }
 
   handleUserChanges(e) {

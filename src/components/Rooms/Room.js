@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import io from 'socket.io-client'
 
+
 import renderPlayers from './Players.js'
-import { sendMessage, loadMessages } from '../../services/socket.js'
+import getInfoUser from '../../services/UserServices'
+import { sendMessage, loadMessages, newUser } from '../../services/EventServices.js'
+
 
 
 const { REACT_APP_API_SERVER } = process.env
@@ -14,7 +17,7 @@ export default class Room extends Component {
     super(props)
     this.state = {
       socket: null,
-      user: null,
+      user: [],
       message: '',
       chatText: [],
       users: []
@@ -35,6 +38,7 @@ export default class Room extends Component {
 
   componentWillMount() {
     this.initSocket()
+    this.handleSetUserInfo()
   }
 
   componentDidMount() {
@@ -46,9 +50,8 @@ export default class Room extends Component {
 
   initSocket = () => {
     const socket = io(REACT_APP_API_SERVER)
-    this.setState({ socket })
     socket.on('connection', () => {
-      console.log('Connected')
+      console.log('Connected!')
     })
     socket.on('chat-messages', messages => {
       this.setState({ chatText: messages })
@@ -59,9 +62,18 @@ export default class Room extends Component {
       this.setState({chatText: updateState })
     })
     socket.on('get-users', users => {
+      console.log(users)
       this.setState({ users: users })
     })
     this.setState({ socket })
+  }
+
+  handleSetUserInfo() {
+    getInfoUser().then( data => {
+      console.log(data)
+      this.setState({ user : data })
+      this.handleNewUser()
+    })
   }
 
   handleChargeUsers() {
@@ -73,7 +85,8 @@ export default class Room extends Component {
   }
 
   handleNewUser() {
-    return(<p className="chat-new-user">{ this.state.currentNewUser }</p>)
+    console.log(this.state.user)
+    newUser(this.state.user, this.state.socket)
   }
 
   handleChargeChat() {
@@ -93,7 +106,8 @@ export default class Room extends Component {
     e.preventDefault()
     const send = {
       message: this.state.message,
-      author: this.state.socket.id,
+      author: this.state.user.username,
+      socket: this.state.socket.id,
       connection: false
     }
     sendMessage(send, this.state.socket)
@@ -116,7 +130,6 @@ export default class Room extends Component {
               <div className="chat-box">
                 <div className="chat">
                   { this.handleChargeChat() }
-                  { this.handleNewUser() }
                   <div style={{ float:"left", clear: "both" }}
                     ref={(el) => { this.messagesEnd = el }}>
                   </div>

@@ -1,27 +1,23 @@
 import React, { Component } from 'react'
 import ShowRooms from './ShowRooms'
 
+
 class Rooms extends Component {
   constructor(props) {
     super(props)
     this.state = {
       rooms: [
         {id: 0, type:0, users:0, author:'Waken', title: 'Blabla', testName:'Programming C'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'},
         {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'}
-      ]
+      ],
+      logged: 'pending'
     }
     this.handleClick = this.handleClick.bind(this)
+  }
+
+  componentDidMount() {
+    const { chargeUser } = this.props
+    chargeUser()
   }
        
   handleClick (e) {
@@ -30,7 +26,7 @@ class Rooms extends Component {
   }
 
   render() {
-    return(
+    return (
       <div className="container">
         <div className="RoomsBody">
           <div className="BarRoom">
@@ -44,7 +40,7 @@ class Rooms extends Component {
         </div>
       </div>
     )
-  } 
+  }
 }
 
 export default Rooms

@@ -5,6 +5,7 @@
 .navbar-kuizu{
   background-image: $navbar_color !important;
   box-shadow: 0 0px 5px rgba(0,0,0,0.5);
+  z-index: 11;
   .TitleNavbar {
     color: white;
     text-transform: capitalize;
@@ -29,5 +30,40 @@
   }
   .GuestImg:hover { 
     border: 1px solid rgba(15, 73, 172, 0.48);
+  }
+}
+.menu-nav {
+  background-image: $navbar_color !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 18px;
+  color: white;
+  z-index: 10;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  min-height: 110px;
+  width: 160px;
+  position: absolute;
+  top: 76.188px;
+  right: 0px;
+  animation: fadeInDown 0.5s;
+  span {
+    font-family: $paytone;
+  }
+  .logout-icon {
+    font-size: 25px;
+  }
+  .profile-nav {
+    text-decoration: underline;
+    background-color: rgba(36, 192, 235, 0.25);
+    border-radius: 9px;
+  }
+  .profile-logout {
+    text-align: right;
+    span {
+      background-color: rgba(36, 192, 235, 0.25);
+      border-radius: 9px;
+    }
   }
 }

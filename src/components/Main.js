@@ -1,21 +1,28 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
+import PrivateRoute from './PrivateRoutes'
+
 import Home from './Home/Home'
 import Login from './Login/Login'
 import Register from './Register/Register'
 import Room from './Rooms/Room'
-import Rooms from './Rooms/Lobby'
+import Lobby from './Rooms/Lobby'
+import Profile from './Profile/Profile'
 
-const Main = () => {
+const Main = props => {
+  const { chargeUser } = props
   return (
     <div>
       <Switch>
         <Route exact path='/' component={ Home }/>
-        <Route exact path='/login' component={ Login }/>
+        <Route exact path='/login' render={
+          props => (<Login chargeUser={ chargeUser } {...props} />
+        )} />
         <Route exact path='/register' component={ Register }/>
-        <Route exact path='/room/' component={ Room } />
-        <Route exact path='/lobby/' component={ Rooms } />
+        <PrivateRoute exact path='/room' component={ Room } />
+        <PrivateRoute exact path='/lobby' component={ Lobby } chargeUser={ chargeUser }/>
+        <PrivateRoute exact path='/profile' component={ Profile }/>
       </Switch>
     </div>
   )

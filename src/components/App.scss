@@ -176,36 +176,41 @@ body {
         display: flex;
         justify-content: center;
         padding-bottom: 15px;
-        div {
-          width: 170px;
+        .card-user {
+          display: flex;
+          align-items: center;
+          width: 70%;
           height: 75px;
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.32);
+          -moz-border-radius: 4px;
+          -webkit-border-radius: 4px;
+          background-color: #21a3f3;
+          color: #e6e6e6;
+          .avatar-container {
+            width: 30%;
+          }
+          .username-container {
+            width: 70%;
+            text-align:right;
+          }
           div {
-            width: 100%;
-            height: 100%;
-            img {
-              max-width:100%;
-              max-height:100%; 
-              width: 32px;
-              height: auto;
-              -moz-border-radius: 30px;
-              -webkit-border-radius: 30px;
-            }
             font-size: 15px;
             font-weight: bold;
             font-family: paytone, sans-serif;
             font-size: 17px;
-            background-color: #21a3f3;
-            color: #e6e6e6;
             word-wrap: break-word;
-            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.32);
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
             padding: 10px 1px 3px 10px;
             margin-bottom: 25px;
-            p {
-              text-align: right;
-              padding-right: 10px;
-              margin: 0px;
+            text-align: right;
+            padding-right: 10px;
+            margin: 0px;
+            span {
+              text-align:right;
+            }
+            img{
+              height: 50px;
+              -moz-border-radius: 30px;
+              -webkit-border-radius: 30px;
             }
           }
         }
