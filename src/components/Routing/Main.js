@@ -3,12 +3,12 @@ import { Switch, Route } from 'react-router-dom'
 
 import PrivateRoute from './PrivateRoutes'
 
-import Home from './Home/Home'
-import Login from './Login/Login'
-import Register from './Register/Register'
-import Room from './Rooms/Room'
-import Lobby from './Rooms/Lobby'
-import Profile from './Profile/Profile'
+import Home from '../Home/Home'
+import Login from '../Login/Login'
+import Register from '../Register/Register'
+import Room from '../Rooms/Room'
+import Lobby from '../Rooms/Lobby'
+import Profile from '../Profile/Profile'
 
 const Main = props => {
   const { chargeUser } = props

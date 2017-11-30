@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 import './App.css'
 
-import Navbar from './Navbar'
-import Main from './Main'
+import Navbar from './Navbar/Navbar'
+import Main from './Routing/Main'
 
 import { getLocalStorage } from '../services/StorageServices'
 import { getInfoUser } from '../services/UserServices'

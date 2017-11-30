@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router'
-import { getLocalStorage } from '../services/StorageServices'
+import { getLocalStorage } from '../../services/StorageServices'
 
 const PrivateRoute = ({ component: Component, chargeUser: chargeUser, user: user, ...rest }) => (
   <Route {...rest} render={props => (

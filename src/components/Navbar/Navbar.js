@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Redirect } from 'react-router-dom'
 
-import { removeLocalStorage, getLocalStorage } from '../services/StorageServices'
+import { removeLocalStorage, getLocalStorage } from '../../services/StorageServices'
 
 
 
