@@ -21,7 +21,7 @@ const Home = () => {
               <i className="fa fa-users"></i>
               <div className="card-body">
                 <h4 className="card-title">Flexible Community</h4>
-                <p className="card-text">Everybody can colaborate together to valorate the tests</p>
+                <p className="card-text">Everybody can make a room to talk with registered people</p>
               </div>
             </div>
             <div className="col-md-4 card ani2">

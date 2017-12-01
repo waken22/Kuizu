@@ -24,12 +24,8 @@ class SimpleSlider extends Component {
           <h1 className="display-5 Phrases">Make your own rooms now!</h1>
         </div>
         <div className="Slider">
-          <h1 className="display-3 Phrases">It's Multiplayer</h1>
+          <h1 className="display-3 Phrases">It's in Real Time</h1>
           <h1 className="display-5 Phrases">Compite now with your friends!</h1>
-        </div>
-        <div className="Slider">
-          <h1 className="display-3 Phrases">It's educative</h1>
-          <h1 className="display-5 Phrases">Learn answering questions!</h1>
         </div>
         <div className="Slider">
           <h1 className="display-3 Phrases">Easy Sign Up</h1>
