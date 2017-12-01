@@ -238,13 +238,11 @@ body {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     margin-left: 20px;
     margin-right: 20px;
-    max-height: 340px;
-    height: 80%;
+    height: 70vh;
     background-color: #f5f1ee;
     .chat {
       overflow: scroll;
-      height: 75%;
-      max-height: 270px;
+      height: 85%;
       padding-top: 20px;
       margin-top: 2.2em;
       background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
@@ -306,7 +304,6 @@ body {
       padding-top: 5px;
       margin-left: 30px;
       left: 0px;
-
       button {
         font-family: "Roboto", sans-serif;
         text-transform: uppercase;
@@ -358,6 +355,7 @@ body {
 
   .BarRoom {
     display: flex;
+    visibility: hidden;
     align-items: center;
     justify-content: space-between;
 

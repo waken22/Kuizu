@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import ShowRooms from './ShowRooms'
 
+import { Redirect } from 'react-router-dom'
 
 class Rooms extends Component {
   constructor(props) {
     super(props)
     this.state = {
       rooms: [
-        {id: 0, type:0, users:0, author:'Waken', title: 'Blabla', testName:'Programming C'},
-        {id: 1, type:0, users:0, author:'Desko27 puto', title: 'Mongolines Powa', testName:'Javascript Test!'}
+        {id: 0, type:0, users:0, author:'Waken', title: 'Main Chatroom!', testName:'Programming C'},
       ],
-      logged: 'pending'
+      logged: 'pending',
+      onEnter: false
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClickRoom = this.handleClickRoom.bind(this) 
   }
 
   componentDidMount() {
@@ -20,12 +21,17 @@ class Rooms extends Component {
     chargeUser()
   }
        
-  handleClick (e) {
-    let roomID = e.target.value.data
-    this.props.history.push(`/room/${roomID}`)
+  // handleClick (e) {
+  //   let roomID = e.target.value.data
+  //   this.props.history.push(`/room/${roomID}`)
+  // }
+
+  handleClickRoom(){
+    this.setState({ onEnter: true })
   }
 
   render() {
+    const onEnter = this.state.onEnter
     return (
       <div className="container">
         <div className="RoomsBody">
@@ -36,7 +42,15 @@ class Rooms extends Component {
               </div>
             </div>
           </div>
-          <ShowRooms rooms={ this.state.rooms }/>
+          <ShowRooms rooms={ this.state.rooms } handleClickRoom={ this.handleClickRoom }/>
+          {
+            onEnter
+            ?
+            (this.setState({ onEnter: false }),
+            <Redirect to='/room'/>)
+            :
+            <div></div>
+          }
         </div>
       </div>
     )

@@ -5,7 +5,7 @@ import io from 'socket.io-client'
 
 import renderPlayers from './Players.js'
 import { getInfoUser } from '../../services/UserServices'
-import { sendMessage, loadMessages, newUser } from '../../services/EventServices.js'
+import { sendMessage, loadMessages, newUser, loadUsers } from '../../services/EventServices.js'
 
 
 
@@ -33,19 +33,24 @@ export default class Room extends Component {
   }
 
   componentDidUpdate() {
-    this.scrollToBottom();
+    console.log('ComponentDidUpdate')
+    this.scrollToBottom()
   }
 
   componentWillMount() {
     this.initSocket()
-    this.handleSetUserInfo()
   }
 
   componentDidMount() {
     this.scrollToBottom()
     this.handleChargeChat()
-    this.handleLoadMessages()
     this.handleChargeUsers()
+    this.handleLoadMessages()
+
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.handleNewUser(nextProps.user)
   }
 
   initSocket = () => {
@@ -54,6 +59,7 @@ export default class Room extends Component {
       console.log('Connected!')
     })
     socket.on('chat-messages', messages => {
+      console.log('Socket chat-messages')
       this.setState({ chatText: messages })
     })
     socket.on('chat-new-message', message => {
@@ -62,19 +68,14 @@ export default class Room extends Component {
       this.setState({chatText: updateState })
     })
     socket.on('get-users', users => {
-      console.log(users)
       this.setState({ users: users })
+      if(this.state.users === 0){
+        window.location.reload()
+      } 
     })
     this.setState({ socket })
   }
 
-  handleSetUserInfo() {
-    getInfoUser().then( data => {
-      console.log(data)
-      this.setState({ user : data })
-      this.handleNewUser()
-    })
-  }
 
   handleChargeUsers() {
     return this.state.users ? renderPlayers(this.state.users) : null
@@ -83,14 +84,12 @@ export default class Room extends Component {
   handleLoadMessages() {
     loadMessages(this.state.socket)
   }
-
-  handleNewUser() {
-    console.log(this.state.user)
-    newUser(this.state.user, this.state.socket)
+  handleNewUser = (user) => {
+    newUser(user, this.state.socket)
   }
 
   handleChargeChat() {
-    const SameAuthor = this.state.socket.id || null
+    const SameAuthor = this.props.user.username || null
     return(this.state.chatText.map(function(chatmsg, i) {
       if (chatmsg.connection)
         return (<div key={i} className="connection-box-text"><p>{ chatmsg.message }</p></div>)
@@ -106,7 +105,7 @@ export default class Room extends Component {
     e.preventDefault()
     const send = {
       message: this.state.message,
-      author: this.state.user.username,
+      author: this.props.user.username,
       socket: this.state.socket.id,
       connection: false
     }
@@ -116,7 +115,7 @@ export default class Room extends Component {
   
 
   handleMessageChange(e) {
-   this.setState({message: e.target.value})
+    this.setState({message: e.target.value})
   }
 
   render() {
@@ -125,8 +124,6 @@ export default class Room extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-9 col-izq">
-              <div className="questions-card">
-              </div>
               <div className="chat-box">
                 <div className="chat">
                   { this.handleChargeChat() }

@@ -11,10 +11,13 @@ function loadMessages(socket) {
   socket.emit('load-messages')
 }
 
-function newUser(send, socket) {
-  console.log(send)
-  console.log(socket)
-  socket.emit('new-user', send)
+function loadUsers(socket) {
+  socket.emit('load-users')
 }
 
-export { sendMessage, loadMessages, newUser }
+function newUser(user, socket) {
+  console.log(user, 'newUser')
+  socket.emit('new-user', user)
+}
+
+export { sendMessage, loadMessages, newUser, loadUsers }

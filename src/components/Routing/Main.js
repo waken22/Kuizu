@@ -21,7 +21,7 @@ const Main = props => {
           props => (<Login chargeUser={ chargeUser } {...props} />
         )} />
         <Route exact path='/register' component={ Register }/>
-        <PrivateRoute exact path='/room' component={ Room } />
+        <PrivateRoute exact path='/room' component={ Room } user={ user } chargeUser={ chargeUser } />
         <PrivateRoute exact path='/lobby' component={ Lobby } chargeUser={ chargeUser }/>
         <PrivateRoute exact path='/profile' component={ Profile } user={ user } chargeUser={ chargeUser }/>
       </Switch>

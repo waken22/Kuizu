@@ -3,7 +3,7 @@ import React from 'react'
 
 const ShowRooms = props => {
   let RoomBars = props.rooms
-  console.log(RoomBars)
+  let handleClickRoom = props.handleClickRoom
   return(
     <div className="row">
     {
@@ -13,7 +13,7 @@ const ShowRooms = props => {
           <div className="room-box">
             <div>{ Room.title + ' by @' + Room.author }</div>
             <div className="text-nametest">{ Room.testName }</div>
-            <button className="ButtonJoinRoom" data={ Room.id }>
+            <button className="ButtonJoinRoom" data={ Room.id } onClick={ handleClickRoom }>
               <span className="RoomUsers">{ Room.users } / 5</span>
               <span className="JoinRoom">Join!</span>
             </button>
