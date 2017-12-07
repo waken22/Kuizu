@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import io from 'socket.io-client'
 
 
-import renderPlayers from './Players.js'
-import { getInfoUser } from '../../services/UserServices'
-import { sendMessage, loadMessages, newUser, loadUsers } from '../../services/EventServices.js'
+import ShowPlayers from './ShowPlayers.js'
+import ShowChatMessages from './ShowChatMessages'
+import { sendMessage, loadMessages, newUser } from '../../services/EventServices.js'
 
 
 
@@ -19,7 +19,7 @@ export default class Room extends Component {
       socket: null,
       user: [],
       message: '',
-      chatText: [],
+      chatMessages: [],
       users: []
     }
     this.handleMessageChange = this.handleMessageChange.bind(this)
@@ -33,8 +33,11 @@ export default class Room extends Component {
   }
 
   componentDidUpdate() {
-    console.log('ComponentDidUpdate')
     this.scrollToBottom()
+  }
+
+  componentWillUnmount(){
+    console.log('CompoWillUnmount!!! here the event of disconnect!')
   }
 
   componentWillMount() {
@@ -43,8 +46,6 @@ export default class Room extends Component {
 
   componentDidMount() {
     this.scrollToBottom()
-    this.handleChargeChat()
-    this.handleChargeUsers()
     this.handleLoadMessages()
 
   }
@@ -60,12 +61,12 @@ export default class Room extends Component {
     })
     socket.on('chat-messages', messages => {
       console.log('Socket chat-messages')
-      this.setState({ chatText: messages })
+      this.setState({ chatMessages: messages })
     })
     socket.on('chat-new-message', message => {
-      this.state.chatText.push(message)
-      const updateState = this.state.chatText
-      this.setState({chatText: updateState })
+      this.state.chatMessages.push(message)
+      const updateState = this.state.chatMessages
+      this.setState({chatMessages: updateState })
     })
     socket.on('get-users', users => {
       this.setState({ users: users })
@@ -77,28 +78,13 @@ export default class Room extends Component {
   }
 
 
-  handleChargeUsers() {
-    return this.state.users ? renderPlayers(this.state.users) : null
-  }
 
   handleLoadMessages() {
     loadMessages(this.state.socket)
   }
+  
   handleNewUser = (user) => {
     newUser(user, this.state.socket)
-  }
-
-  handleChargeChat() {
-    const SameAuthor = this.props.user.username || null
-    return(this.state.chatText.map(function(chatmsg, i) {
-      if (chatmsg.connection)
-        return (<div key={i} className="connection-box-text"><p>{ chatmsg.message }</p></div>)
-      else
-        if (chatmsg.author === SameAuthor)
-          return (<div key={i} className="chat-box-text-right"><p>{ chatmsg.author } : { chatmsg.message }</p></div>)
-        else
-          return (<div key={i} className="chat-box-text-left"><p>{ chatmsg.author } : { chatmsg.message }</p></div>)
-    }))
   }
 
   handleSendMessage(e) {
@@ -119,6 +105,8 @@ export default class Room extends Component {
   }
 
   render() {
+    const { username } = this.props.user
+    const { message, users, chatMessages } = this.state
     return(
       <div className="Room">
         <div className="container-fluid">
@@ -126,14 +114,14 @@ export default class Room extends Component {
             <div className="col-md-9 col-izq">
               <div className="chat-box">
                 <div className="chat">
-                  { this.handleChargeChat() }
+                  <ShowChatMessages messages={ chatMessages } username={ username } />
                   <div style={{ float:"left", clear: "both" }}
                     ref={(el) => { this.messagesEnd = el }}>
                   </div>
                 </div>
                 <form className="send-box" onSubmit={ this.handleSendMessage }>
                   <button>Send</button>
-                  <input value={ this.state.message } onChange={ this.handleMessageChange } type="text" placeholder="Write here..." autoFocus/>
+                  <input value={ message } onChange={ this.handleMessageChange } type="text" placeholder="Write here..." autoFocus/>
                 </form>
               </div>
             </div>
@@ -141,7 +129,7 @@ export default class Room extends Component {
               <div className="users-card">
                 <p className="users-card-title">Players Online</p>
                 <ul>
-                  { this.handleChargeUsers() }
+                { users ? <ShowPlayers users={ users } /> : <div></div> }
                 </ul>
               </div>
             </div>

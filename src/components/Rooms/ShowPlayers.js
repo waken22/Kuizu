@@ -1,6 +1,11 @@
 import React from 'react'
 
-const renderPlayers = users => {
+// ****************************************************************************
+// *      Component that shows the players on the list of players online      *
+// ****************************************************************************
+
+const ShowPlayers = props => {
+  let { users } = props
   users = users.map(function(player, i) {
     return(
       <li key={ i }>
@@ -18,4 +23,4 @@ const renderPlayers = users => {
   return users
 }
 
-export default renderPlayers
+export default ShowPlayers

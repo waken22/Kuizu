@@ -14,11 +14,18 @@ class Navbar extends Component {
     this.state = {
       menuNav: false,
       logoutNav: false,
-      profileNav: false
+      profileNav: false,
+      pathname: ''
     }
     this.NavToggle = this.NavToggle.bind(this)
     this.LogoutToggle = this.LogoutToggle.bind(this)
     this.ProfileToggle = this.ProfileToggle.bind(this)
+  }
+
+
+  ChangePathName() {
+    let currentPath = window.location.pathname
+    this.setState({ pathname: currentPath })
   }
 
   NavToggle() {
@@ -54,6 +61,7 @@ class Navbar extends Component {
   render() {
     const avatar = this.props.user
     const { menuNav, logoutNav, profileNav } = this.state
+
     return(
       <div>
         <nav className="navbar bg-primary navbar-kuizu">
