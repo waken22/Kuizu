@@ -36,8 +36,10 @@ export default class Room extends Component {
     this.scrollToBottom()
   }
 
+  // Disconnect the player if the component is unmounted
   componentWillUnmount(){
-    console.log('CompoWillUnmount!!! here the event of disconnect!')
+    const { socket } = this.state
+    socket.disconnect()
   }
 
   componentWillMount() {
@@ -47,11 +49,12 @@ export default class Room extends Component {
   componentDidMount() {
     this.scrollToBottom()
     this.handleLoadMessages()
+    this.eventNewUser(this.props.user)
 
   }
 
   componentWillReceiveProps(nextProps){
-    this.handleNewUser(nextProps.user)
+    this.eventNewUser(nextProps.user)
   }
 
   initSocket = () => {
@@ -83,7 +86,7 @@ export default class Room extends Component {
     loadMessages(this.state.socket)
   }
   
-  handleNewUser = (user) => {
+  eventNewUser = (user) => {
     newUser(user, this.state.socket)
   }
 

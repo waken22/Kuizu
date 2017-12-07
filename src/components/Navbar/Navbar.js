@@ -4,8 +4,6 @@ import { Redirect } from 'react-router-dom'
 
 import { removeLocalStorage, getLocalStorage } from '../../services/StorageServices'
 
-
-
 import './Navbar.css'
 
 class Navbar extends Component {
