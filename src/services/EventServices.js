@@ -16,8 +16,9 @@ function loadUsers(socket) {
 }
 
 function newUser(user, socket) {
-  console.log(user, 'newUser')
-  socket.emit('new-user', user)
+  // No new event if there is no username in the obj
+  if(user.username)
+    socket.emit('new-user', user)
 }
 
 export { sendMessage, loadMessages, newUser, loadUsers }
