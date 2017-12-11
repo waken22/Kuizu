@@ -216,7 +216,8 @@ body {
               text-align:right;
             }
             img{
-              height: 50px;
+              height: 45px;
+              width: 45px;
               -moz-border-radius: 30px;
               -webkit-border-radius: 30px;
             }
@@ -434,7 +435,6 @@ body {
 // ****************************************************************************
 
 .profile-body {
-  height: 700px;
   display: flex;
   justify-content: space-around;
   .profile-card {
@@ -444,7 +444,7 @@ body {
     padding-top: 30px;
     margin-top: 65px;
     margin-bottom: 25px;
-    height: 550px;
+    height: 635px;
     width: 55%;
     background: white;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -453,10 +453,7 @@ body {
       display: flex;
       justify-content: space-around;
       img {
-        width: 90%;
-        height: 90%;
-        max-width: 210px;
-        max-height: 210px;
+        max-height: 180px;
       }
     }
     form {
@@ -477,8 +474,9 @@ body {
     }
   }
 }
-@media (min-width: 767px) {
+
+@media (min-width: 768px) {
   .profile-card {
     height: 400px !important;
   }
-}  
+}
