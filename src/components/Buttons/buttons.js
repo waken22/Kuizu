@@ -1,6 +1,5 @@
 import React from 'react'
 
-import './buttons.css'
 
 const ButtonSpecial = props => {
   function MakeButton() {

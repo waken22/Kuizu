@@ -1,9 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import '../App.scss'
-
-
 import ButtonSpecial from '../Buttons/buttons'
 import SliderHome from './SliderHome'
 

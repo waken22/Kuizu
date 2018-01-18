@@ -1,0 +1,84 @@
+// ****************************************************************************
+// *                                Lobby Body                                *
+// ****************************************************************************
+.RoomsBody {
+  .BarRoom {
+    display: flex;
+    visibility: hidden;
+    align-items: center;
+    justify-content: space-between;
+    font-family: $paytone;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    height: 80px;
+    border-radius: 5px;
+    background: none;
+    button {
+      font-family: $paytone;
+      box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.5);
+      word-wrap: break-word;
+      width: 150px;
+      border-radius: 7px;
+    }
+    .RoomsOnlineContainer {
+      text-align: center;
+      .RoomsOnline {
+        box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.5);
+        border-radius: 7px;
+        background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+        color: #7A7A7A;
+        width: 150px;
+      }
+      p {
+        font-size: 17px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+  .room-box {
+    position: relative;
+    color: #7A7A7A;
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.5);
+    height: 150px;
+    font-family: $paytone;
+    padding: 10px 5px 5px 20px;
+    margin-bottom: 30px;
+    .text-nametest {
+      background-color: #D7FFFF;
+      border-radius: 7px;
+    }
+    .ButtonJoinRoom {
+      font-family: $paytone;
+      $width: 90px;
+      $height: 60px;
+      width: $width;
+      height: $height;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      &:before {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-top: $height*2 solid transparent;
+        border-right: $width*2 solid #24C0EB;
+      }
+      .JoinRoom {
+        display: none;
+      }
+      .RoomUsers {
+        display: block;
+      }
+      &:hover .JoinRoom {
+        display: block;
+      }
+      &:hover .RoomUsers {
+        display: none;
+      }
+    }
+  }
+}

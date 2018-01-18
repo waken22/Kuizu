@@ -1,0 +1,27 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Paytone+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+@import './_fonts.scss';
+@import './_colors.scss';
+@import './components/_buttons.scss';
+@import './components/_navbar.scss';
+@import './components/_home.scss';
+@import './components/_login.scss';
+@import './components/_room.scss';
+@import './components/_profile.scss';
+@import './components/_lobby.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  // color: $text_color_body;
+  height: 100%;
+  background-image: linear-gradient(to top, #0f2c6a, #113c8d, #104cb2, #0c5dd8, #006fff);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './App.css'
+import '../styles/main.css'
 
 import Navbar from './Navbar/Navbar'
 import Main from './Routing/Main'
