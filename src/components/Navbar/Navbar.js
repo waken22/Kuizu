@@ -4,8 +4,6 @@ import { Redirect } from 'react-router-dom'
 
 import { removeLocalStorage, getLocalStorage } from '../../services/StorageServices'
 
-import './Navbar.css'
-
 class Navbar extends Component {
   constructor(props){
     super(props)
@@ -64,7 +62,7 @@ class Navbar extends Component {
       <div>
         <nav className="navbar bg-primary navbar-kuizu">
           <a className="navbar-brand TitleNavbar" href="">Kuizu</a>
-          <img onClick={ this.NavToggle } className="img-fluid GuestImg" src={ avatar } alt="loading"/>
+          <img onClick={ this.NavToggle } className="img-fluid guest-img" src={ avatar } alt="loading"/>
         </nav>
         { 
           menuNav ?

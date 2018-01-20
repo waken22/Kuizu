@@ -2,11 +2,17 @@
 @import url('https://fonts.googleapis.com/css?family=Paytone+One');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
+
+// Variables
 @import './_fonts.scss';
 @import './_colors.scss';
+
+// Additional components
 @import './components/_buttons.scss';
-@import './components/_navbar.scss';
+
+// All website structure
 @import './components/_home.scss';
+@import './components/_navbar.scss';
 @import './components/_login.scss';
 @import './components/_room.scss';
 @import './components/_profile.scss';

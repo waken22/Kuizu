@@ -1,12 +1,8 @@
-@import '../../styles/colors.scss';
-@import '../../styles/fonts.scss';
-
-
 .navbar-kuizu{
   background-image: $navbar_color !important;
   box-shadow: 0 0px 5px rgba(0,0,0,0.5);
   z-index: 11;
-  .TitleNavbar {
+  .title-navbar {
     color: white;
     text-transform: capitalize;
     text-shadow: 1px 1px $color_3;
@@ -19,7 +15,7 @@
     padding-top: 0px;
     padding-bottom: 0px;
   }
-  .GuestImg {
+  .guest-img {
     display: block;
     width: 45px;
     height: 45px;
@@ -28,7 +24,7 @@
     background-position:50% 50%;
     background-repeat:no-repeat;    
   }
-  .GuestImg:hover { 
+  .guest-img:hover { 
     border: 1px solid rgba(15, 73, 172, 0.48);
   }
 }

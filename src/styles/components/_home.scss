@@ -1,13 +1,13 @@
 // ****************************************************************************
 // *                                   Home                                   *
 // ****************************************************************************
-.Phrases {
+.phrases {
   text-align: center;
   color: $phrases_color !important;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
-.Slider {
+.slider {
   margin-top: 60px;
   margin-bottom: 60px;
 }
@@ -16,7 +16,7 @@
   display: none;
 }
 
-.DivJoin {
+.div-join {
   // Center buttons ever
   justify-content: center;
   align-content: center;
@@ -33,7 +33,7 @@
   }
 }
 
-.Cards {
+.cards {
   padding-top: 75px;
   text-align: center;
   .row {

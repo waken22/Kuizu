@@ -8,11 +8,11 @@ const Home = () => {
   return (
     <div className='Home'>
       <SliderHome />
-      <div className='DivJoin'>
+      <div className='div-join'>
         <Link to='/login'><ButtonSpecial type='raise' text='Join Now !' /></Link>
       </div>
       <div className="container-fluid">
-        <div className="Cards">
+        <div className="cards">
           <div className="row">
             <div className="col-md-4 card ani1">
               <i className="fa fa-users"></i>

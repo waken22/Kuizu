@@ -19,17 +19,17 @@ class SimpleSlider extends Component {
     return (
       <div>
       <Slider {...settings}>
-        <div className="Slider">
-          <h1 className="display-3 Phrases">Absolutely free</h1>
-          <h1 className="display-5 Phrases">Make your own rooms now!</h1>
+        <div className="slider">
+          <h1 className="display-3 phrases">Absolutely free</h1>
+          <h1 className="display-5 phrases">Make your own rooms now!</h1>
         </div>
-        <div className="Slider">
-          <h1 className="display-3 Phrases">It's in Real Time</h1>
-          <h1 className="display-5 Phrases">Compite now with your friends!</h1>
+        <div className="slider">
+          <h1 className="display-3 phrases">It's in Real Time</h1>
+          <h1 className="display-5 phrases">Compite now with your friends!</h1>
         </div>
-        <div className="Slider">
-          <h1 className="display-3 Phrases">Easy Sign Up</h1>
-          <h1 className="display-5 Phrases">Just do it! Don't wait more!</h1>
+        <div className="slider">
+          <h1 className="display-3 phrases">Easy Sign Up</h1>
+          <h1 className="display-5 phrases">Just do it! Don't wait more!</h1>
         </div>
       </Slider>
       </div>
