@@ -39,3 +39,11 @@ This project was made by [Jesé Ramon Barcones](https://github.com/waken22/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## TO DO
+
+1. Fix and Update tecnologies in README
+2. Fix security issues finding what packages are needed to update
+3. Stop the use of create-react-app use webpack instead
+4. Re-code the styles 
+5. Group together the api and the front in the same repo
+
