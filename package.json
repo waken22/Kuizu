@@ -16,7 +16,8 @@
     "react-slick": "^0.15.4",
     "react-toastr": "^3.0.0",
     "socket.io-client": "^2.0.4",
-    "toastr": "^2.1.2"
+    "toastr": "^2.1.2",
+    "snyk": "^1.85.0"
   },
   "scripts": {
     "start-js": "react-scripts start",
@@ -26,6 +27,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
-  }
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
